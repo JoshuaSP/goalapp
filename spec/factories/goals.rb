@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :goal do
-    body "MyString"
+    body "Eat more vegetables"
     user build(:user)
     completed false
     is_private false
