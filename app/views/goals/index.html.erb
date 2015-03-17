@@ -3,7 +3,7 @@
 <%= button_to "Create Goal", new_goal_url, method: :get, id: "create_goal" %>
 
 <% @goals.each do |goal| %>
-  <%= goal.body %>
+  <%= goal.body %> - <%= link_to goal.user.username, user_url(goal.user) %>
   <% if goal.user_id == current_user.id %>
     <%= button_to "Edit", edit_goal_url(goal), id: "edit_goal_#{goal.id}", method: :get %>
     <%= button_to "Delete", goal_url(goal), id: "delete_goal_#{goal.id}", method: :delete %>

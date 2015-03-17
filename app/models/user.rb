@@ -6,6 +6,12 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
+  has_many :comments, as: :commentable
+  has_many(
+    :authored_comments,
+    foreign_key: :author_id,
+    class_name: :Comment
+  )
   has_many :goals, dependent: :destroy
 
   def ensure_session_token
