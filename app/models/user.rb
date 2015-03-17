@@ -8,6 +8,13 @@ class User < ActiveRecord::Base
 
   has_many :goals, dependent: :destroy
 
+  has_many :user_comments
+  has_many(
+    :goal_comments,
+    through: :goals,
+    source: :goal_comments
+  )
+
   def ensure_session_token
     get_session_token unless self.session_token
   end

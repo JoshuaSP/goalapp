@@ -9,12 +9,12 @@ feature "a user" do
     chris = build(:user, username: "chris")
     sign_up(chris)
     click_link('johndoe')
-    click_button('add_user_comment')
-    fill_in('Comment', with: "You're very heathy!")
+    fill_in('Comment', with: "You're very healthy!")
     click_button('Submit')
     expect(page).to have_content("You're very healthy!")
 
     click_button("add_comment_to_goal_#{goal.id}")
+    save_and_open_page
     fill_in('Comment', with: "I hate vegetables :(")
     click_button('Submit')
     expect(page).to have_content("To eat more vegetables")

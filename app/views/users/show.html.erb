@@ -1,0 +1,16 @@
+<h1><%= @user.username %></h1>
+
+<%= render 'shared/comment_form', url: user_user_comments_url(@user) %>
+
+<% @user.user_comments.each do |comment| %>
+  <%= comment.body %> - <%= comment.author.username %>
+  <br>
+<% end %>
+
+<% @user.goals.each do |goal| %>
+  <h4><%= goal.body %></h4>
+  <%= button_to 'Add Comment', new_goal_goal_comment_url(goal), id: "add_comment_to_goal_#{goal.id}", method: :get %>
+  <% goal.goal_comments.each do |comment| %>
+    <%= comment.body %> - <%= comment.author.username %>
+  <% end %>
+<% end %>
